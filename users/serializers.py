@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User,CategoryName
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate
 from rest_framework.exceptions import AuthenticationFailed
@@ -41,4 +41,9 @@ class UserSerializer(serializers.ModelSerializer):
             return user
 
         raise ValidationError("Passwords do not match or are missing")
+    
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CategoryName
+        fields = ('id', 'name')
  

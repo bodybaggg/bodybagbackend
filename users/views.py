@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from .serializers import UserSerializer
+from .serializers import UserSerializer,CategorySerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
-from .models import User
+from .models import User,CategoryName
 from rest_framework import status
 from .communitycode import generate_unique_code#, post_save_generate_unique_code
 import jwt,datetime
@@ -97,3 +97,27 @@ class LogoutView(APIView):
         
         return response
     
+    
+class CategoryList(APIView):
+
+    def post(self,request):
+        serializer = CategorySerializer(data = request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+        return Response(serializer.data)
+    
+    # def get(self,request):
+    #     serializer = CategorySerializer(data=request.data)
+    def get(self, request):
+        categories = CategoryName.objects.all()
+        serializer = CategorySerializer(categories, many=True)
+        return Response(serializer.data)
+        
+    # def get(self, request):
+    #     categories = CategoryName.objects.all()
+    #     serializer = CategorySerializer(categories, many=True)
+        
+    #     # Extract only the 'name' field from the serialized data
+    #     names_list = [item['name'] for item in serializer.data]
+        
+    #     return Response(names_list)

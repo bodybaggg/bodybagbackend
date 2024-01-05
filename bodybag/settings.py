@@ -90,16 +90,24 @@ TEMPLATES = [
 WSGI_APPLICATION = "bodybag.wsgi.application"
 
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": 'community',
+#         "HOST": 'localhost',
+#         "PORT": '5432',
+#         "USER": 'postgres',
+#         "PASSWORD": 'admin'
+#     }
+# }
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'community',
-        "HOST": 'localhost',
-        "PORT": '5432',
-        "USER": 'postgres',
-        "PASSWORD": 'admin'
+        "ENGINE": "django.db.backends.sqllite3",
+        "NAME": BASE_DIR / 'db.sqlite3',
+       
     }
 }
+
 
 DATABASES['default']= dj_database_url.config()
 

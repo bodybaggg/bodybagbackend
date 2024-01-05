@@ -87,7 +87,7 @@ WSGI_APPLICATION = "bodybag.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'community',
+        "NAME": 'body',
         "HOST": 'localhost',
         "PORT": '5432',
         "USER": 'postgres',

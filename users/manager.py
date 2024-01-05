@@ -57,7 +57,7 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault("instagram", "admin")
         extra_fields.setdefault("phone_number", "+918606257889")
         extra_fields.setdefault("location", "Kochi")
-        extra_fields.setdefault("category", "rapper")
+        extra_fields.setdefault("category", ["rapper"])
         extra_fields.setdefault("experience", 1)
         extra_fields.setdefault("unique_code","H00")
         

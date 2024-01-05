@@ -12,19 +12,13 @@ class User(AbstractUser,PermissionsMixin):
         ("F", _("Female")),
     ]
 
-    CATEGORY_CHOICES = [
-        ("rapper", _("Rapper")),
-        ("skater", _("Skater")),
-        ("graphic_designer", _("Graphic Designer")),
-
-    ]
     name = models.CharField(max_length=255, verbose_name = _("Username"))
     gender = models.CharField(max_length = 10, choices=GENDER_CHOICES,verbose_name=_("Gender"))
     email = models.EmailField(max_length=255,unique=True,verbose_name=_("Email address"))
     phone_number = PhoneNumberField(max_length=15,unique=True, verbose_name=_("Mobile Number"))
     instagram = models.CharField(max_length=255, unique=True,  verbose_name=_("Instagram"))
     location = models.CharField(max_length=255, verbose_name=_("Location"))
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, verbose_name=_("Category"))
+    category = models.JSONField(verbose_name=_("Category"))
     experience = models.IntegerField(verbose_name=_("Experience"))
     unique_code = models.CharField(max_length=100,unique=True, editable=False)
     is_staff = models.BooleanField(default=False)

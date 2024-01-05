@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.exceptions import AuthenticationFailed
 from .models import User
 from rest_framework import status
-from .communitycode import generate_unique_code, post_save_generate_unique_code
+from .communitycode import generate_unique_code#, post_save_generate_unique_code
 import jwt,datetime
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.

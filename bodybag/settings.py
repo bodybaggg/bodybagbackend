@@ -87,15 +87,15 @@ WSGI_APPLICATION = "bodybag.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'railway',
-        "HOST": 'viaduct.proxy.rlwy.net',
-        "PORT": '55009',
+        "NAME": 'community',
+        "HOST": 'localhost',
+        "PORT": '5432',
         "USER": 'postgres',
-        "PASSWORD": 'CF6*B*4eeGa-1DBG445BedBc6GDD-5D2'
+        "PASSWORD": 'admin'
     }
 }
 
-DATABASES['default'] = dj_database_url.config()
+# DATABASES['default'] = dj_database_url.config()
 
 
 # Password validation

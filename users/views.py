@@ -100,9 +100,10 @@ class LogoutView(APIView):
     
 class CategoryList(APIView):
 
-    
+
+
     def get(self, request):
-        categories = CategoryName.objects.all()
-        serializer = CategorySerializer(categories, many=True)
+        Categories = CategoryName.objects.all()
+        serializer = CategorySerializer(Categories, many=True)
         return Response(serializer.data)
         

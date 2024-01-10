@@ -86,12 +86,12 @@ WSGI_APPLICATION = "bodybag.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'body',
-        "HOST": 'localhost',
-        "PORT": '5432',
+        "ENGINE": "postgresql://postgres:*4BCDcaFd532bDAb3D3bCd3G-*2-gE35@monorail.proxy.rlwy.net:18413/railway",
+        "NAME": 'railway',
+        "HOST": 'monorail.proxy.rlwy.net',
+        "PORT": '18413',
         "USER": 'postgres',
-        "PASSWORD": 'admin'
+        "PASSWORD": '*4BCDcaFd532bDAb3D3bCd3G-*2-gE35'
     }
 }
 

@@ -100,24 +100,9 @@ class LogoutView(APIView):
     
 class CategoryList(APIView):
 
-    def post(self,request):
-        serializer = CategorySerializer(data = request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-        return Response(serializer.data)
     
-    # def get(self,request):
-    #     serializer = CategorySerializer(data=request.data)
     def get(self, request):
         categories = CategoryName.objects.all()
         serializer = CategorySerializer(categories, many=True)
         return Response(serializer.data)
         
-    # def get(self, request):
-    #     categories = CategoryName.objects.all()
-    #     serializer = CategorySerializer(categories, many=True)
-        
-    #     # Extract only the 'name' field from the serialized data
-    #     names_list = [item['name'] for item in serializer.data]
-        
-    #     return Response(names_list)

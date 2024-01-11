@@ -15,7 +15,7 @@ from datetime import timedelta
 import os
 import dj_database_url
 from decouple import config
-
+import dotenv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,8 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#jt@+90s=ol^5=$f$s&*v(b60-b)3ml$rd@w@%a@#x)g45v2m-'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -84,18 +88,30 @@ TEMPLATES = [
 WSGI_APPLICATION = "bodybag.wsgi.application"
 
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": 'railway',
+#         "HOST": 'monorail.proxy.rlwy.net',
+#         "PORT": '18413',
+#         "USER": 'postgres',
+#         "PASSWORD": '6DDDEbdg3b-6Gab2ABbBd16432bcbeBf'
+#     }
+# }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "postgresql://postgres:6DDDEbdg3b-6Gab2ABbBd16432bcbeBf@monorail.proxy.rlwy.net:41261/railwayy",
-        "NAME": 'railway',
-        "HOST": 'monorail.proxy.rlwy.net',
-        "PORT": '18413',
-        "USER": 'postgres',
-        "PASSWORD": '6DDDEbdg3b-6Gab2ABbBd16432bcbeBf'
+    'default': {
+        'ENGINE': os.environ['ENGINE'],
+        'HOST': os.environ['HOST'],
+        'NAME': os.environ['NAME'],
+        'USER': os.environ['USER'],
+        'PASSWORD': os.environ['PASSWORD'],
+        'PORT': os.environ['PORT'],
+        
     }
 }
 
-# DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config()
 
 
 # Password validation

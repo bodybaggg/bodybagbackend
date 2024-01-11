@@ -1,5 +1,6 @@
-*.env
-*.sqlite3
+.env
+.env/
+.sqlite3
 venv/
 bodyenv/
 settings.py

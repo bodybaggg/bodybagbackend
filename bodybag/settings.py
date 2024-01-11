@@ -86,12 +86,12 @@ WSGI_APPLICATION = "bodybag.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "postgresql://postgres:*4BCDcaFd532bDAb3D3bCd3G-*2-gE35@monorail.proxy.rlwy.net:18413/railway",
+        "ENGINE": "postgresql://postgres:6DDDEbdg3b-6Gab2ABbBd16432bcbeBf@monorail.proxy.rlwy.net:41261/railwayy",
         "NAME": 'railway',
         "HOST": 'monorail.proxy.rlwy.net',
         "PORT": '18413',
         "USER": 'postgres',
-        "PASSWORD": '*4BCDcaFd532bDAb3D3bCd3G-*2-gE35'
+        "PASSWORD": '6DDDEbdg3b-6Gab2ABbBd16432bcbeBf'
     }
 }
 

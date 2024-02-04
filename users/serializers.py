@@ -17,16 +17,11 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password':{
                 'write_only':True
-            },
-            'notification_enabled':{'write_only':True}
-
+                }
             
         }
         
     def validate(self, data):
-        
-        if data['notification_enabled'] == 'False':
-            raise serializers.ValidationError('Please Click the Notification True')
         # Check if passwords match
         if data['password'] != data['password2']:
             raise serializers.ValidationError("Passwords do not match")

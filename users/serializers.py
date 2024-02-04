@@ -23,7 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
         
     def validate(self, data):
         # Check if passwords match
-        if data['notification']!='True':
+        if data.get('notification') is not True:
             raise serializers.ValidationError("Notification must be True")
         if data['password'] != data['password2']:
             raise serializers.ValidationError("Passwords do not match")

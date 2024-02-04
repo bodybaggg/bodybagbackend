@@ -13,16 +13,20 @@ class UserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User
-        fields = ["name","gender","email","phone_number","instagram","location","password","password2","category","experience","unique_code"]
+        fields = ["name","gender","email","phone_number","instagram","location","password","password2","category","experience","notification_enabled","unique_code"]
         extra_kwargs = {
             'password':{
                 'write_only':True
             },
+            'notification_enabled':{'write_only':True}
 
             
         }
         
     def validate(self, data):
+        
+        if data['notification_enabled'] == 'False':
+            raise serializers.ValidationError('Please Click the Notification True')
         # Check if passwords match
         if data['password'] != data['password2']:
             raise serializers.ValidationError("Passwords do not match")

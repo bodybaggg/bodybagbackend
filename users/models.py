@@ -20,6 +20,7 @@ class User(AbstractUser,PermissionsMixin):
     location = models.CharField(max_length=255, verbose_name=_("Location"))
     category = models.JSONField(verbose_name=_("Category"))
     experience = models.IntegerField(verbose_name=_("Experience"))
+    notification_enabled = models.BooleanField(default=False, verbose_name=_("Notification Enabled"))
     unique_code = models.CharField(max_length=100,unique=True, editable=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)

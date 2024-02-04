@@ -21,6 +21,7 @@ class User(AbstractUser,PermissionsMixin):
     category = models.JSONField(verbose_name=_("Category"))
     experience = models.IntegerField(verbose_name=_("Experience"))
     unique_code = models.CharField(max_length=100,unique=True, editable=False)
+    notification = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)

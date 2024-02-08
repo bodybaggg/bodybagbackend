@@ -9,11 +9,10 @@ from rest_framework_simplejwt.tokens import Token,TokenError,RefreshToken
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=68, min_length=6,write_only=True)
-    password2 = serializers.CharField(max_length=68, min_length=6,write_only=True)
     
     class Meta:
         model = User
-        fields = ["name","gender","email","phone_number","instagram","location","password","password2","category","experience","notification","unique_code"]
+        fields = ["name","gender","email","phone_number","instagram","location","password","category","experience","notification","unique_code"]
         extra_kwargs = {
             'password':{
                 'write_only':True
@@ -25,15 +24,14 @@ class UserSerializer(serializers.ModelSerializer):
         # Check if passwords match
         if data.get('notification') is not True:
             raise serializers.ValidationError("Notification must be True")
-        if data['password'] != data['password2']:
-            raise serializers.ValidationError("Passwords do not match")
+        
 
         return data
         
     
     def create(self, validated_data):
         password = validated_data.pop('password', None)
-        password2 = validated_data.pop('password2', None)
+        password2 = validated_data.pop('password', None)
         if password and password2 and password == password2:
             # If both passwords match, set the hashed password
             user = super().create(validated_data)

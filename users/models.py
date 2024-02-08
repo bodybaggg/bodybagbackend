@@ -10,6 +10,7 @@ class User(AbstractUser,PermissionsMixin):
     GENDER_CHOICES = [
         ("M", _("Male")),
         ("F", _("Female")),
+        ("O",_("Other")),
     ]
 
     name = models.CharField(max_length=255, verbose_name = _("Username"))

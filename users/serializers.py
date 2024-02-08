@@ -31,8 +31,7 @@ class UserSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         password = validated_data.pop('password', None)
-        password2 = validated_data.pop('password', None)
-        if password and password2 and password == password2:
+        if password:
             # If both passwords match, set the hashed password
             user = super().create(validated_data)
             user.set_password(password)

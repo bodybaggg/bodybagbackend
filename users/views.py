@@ -23,11 +23,18 @@ class RegisterView(APIView):
                 generate_unique_code(sender=User, instance=user,created=True)
                 user.refresh_from_db()
                 unique_code = user.unique_code
-                # token = generate_jwt(user.id)
+            
+            #Generate JWT token
+            payload = {
+                'id': user.id,
+                'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=60),
+                'iat': datetime.datetime.utcnow()
+            }
+            token = jwt.encode(payload,'secret', algorithm='HS256')
             
             return Response({
                 "CommunityCode":unique_code,
-                # 'jwt':token
+                'jwt':token
                 },
                             status.HTTP_201_CREATED)
         
